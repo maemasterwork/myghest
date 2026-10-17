@@ -43,30 +43,14 @@ export default function Shell() {
   const { dark, toggle } = useTheme()
   const { error } = useData()
   const [more, setMore] = useState(false)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
   return (
     <div className="min-h-dvh pb-28 md:pb-12">
       <header className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4">
+        <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4 md:max-w-none md:px-6">
           <Logo />
           <span className="text-lg font-extrabold">قسط‌یار</span>
-
-          <nav className="ms-6 hidden items-center gap-1 md:flex">
-            {NAV.map((n) => (
-              <NavLink
-                key={n.to}
-                to={n.to}
-                end={n.end}
-                className={({ isActive }) =>
-                  `rounded-xl px-4 py-2 text-sm font-semibold transition ${
-                    isActive ? 'bg-brand-soft text-brand' : 'text-muted hover:text-text'
-                  }`
-                }
-              >
-                {n.label}
-              </NavLink>
-            ))}
-          </nav>
 
           <div className="ms-auto flex items-center gap-1">
             <IconButton label={dark ? 'حالت روشن' : 'حالت تیره'} onClick={toggle}>
@@ -81,28 +65,67 @@ export default function Shell() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-4 pt-6">
-        {demoMode && (
-          <div className="mb-5 rounded-2xl bg-warn-soft px-4 py-3 text-[13px] leading-6 text-warn">
-            حالت نمایشی: Supabase هنوز وصل نشده و داده‌ها فقط در همین مرورگر ذخیره می‌شوند. برای استفاده‌ی واقعی،
-            فایل <span dir="ltr">.env</span> را طبق راهنما تنظیم کن.
+      <div
+        className={`md:grid md:transition-[grid-template-columns] ${
+          sidebarCollapsed
+            ? 'md:grid-cols-[5rem_minmax(0,1fr)]'
+            : 'md:grid-cols-[14rem_minmax(0,1fr)]'
+        }`}
+      >
+        <aside className="hidden border-e border-line bg-surface px-3 py-4 md:flex md:min-h-[calc(100dvh-4rem)] md:flex-col">
+          <div className={`mb-4 flex ${sidebarCollapsed ? 'justify-center' : 'justify-start'}`}>
+            <IconButton
+              label={sidebarCollapsed ? 'گسترش منو' : 'جمع کردن منو'}
+              aria-expanded={!sidebarCollapsed}
+              aria-controls="desktop-navigation"
+              onClick={() => setSidebarCollapsed((collapsed) => !collapsed)}
+            >
+              <Icon name="chev" className={sidebarCollapsed ? '-rotate-90' : 'rotate-90'} />
+            </IconButton>
           </div>
-        )}
-        {error && (
-          <div className="mb-5 rounded-2xl bg-bad-soft px-4 py-3 text-sm text-bad">
-            خطا در ارتباط با دیتابیس: {error}
-          </div>
-        )}
-        <Outlet />
-        <PayModal />
-        <TxHost />
-        <DailyPrompt />
-        {!demoMode && user?.email && (
-          <p className="mt-10 text-center text-xs text-muted" dir="ltr">
-            {user.email}
-          </p>
-        )}
-      </main>
+          <nav id="desktop-navigation" aria-label="منوی اصلی" className="flex flex-col gap-1">
+            {NAV.map((n) => (
+              <NavLink
+                key={n.to}
+                to={n.to}
+                end={n.end}
+                title={n.label}
+                className={({ isActive }) =>
+                  `flex min-h-11 items-center rounded-xl text-sm font-semibold transition ${
+                    sidebarCollapsed ? 'justify-center px-0' : 'gap-3 px-3'
+                  } ${isActive ? 'bg-brand-soft text-brand' : 'text-muted hover:bg-surface-2 hover:text-text'}`
+                }
+              >
+                <Icon name={n.icon} />
+                <span className={sidebarCollapsed ? 'sr-only' : ''}>{n.label}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </aside>
+
+        <main className="mx-auto w-full max-w-3xl px-4 pt-6 md:px-6">
+          {demoMode && (
+            <div className="mb-5 rounded-2xl bg-warn-soft px-4 py-3 text-[13px] leading-6 text-warn">
+              حالت نمایشی: Supabase هنوز وصل نشده و داده‌ها فقط در همین مرورگر ذخیره می‌شوند. برای استفاده‌ی واقعی،
+              فایل <span dir="ltr">.env</span> را طبق راهنما تنظیم کن.
+            </div>
+          )}
+          {error && (
+            <div className="mb-5 rounded-2xl bg-bad-soft px-4 py-3 text-sm text-bad">
+              خطا در ارتباط با دیتابیس: {error}
+            </div>
+          )}
+          <Outlet />
+          <PayModal />
+          <TxHost />
+          <DailyPrompt />
+          {!demoMode && user?.email && (
+            <p className="mt-10 text-center text-xs text-muted" dir="ltr">
+              {user.email}
+            </p>
+          )}
+        </main>
+      </div>
 
       <nav
         className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
