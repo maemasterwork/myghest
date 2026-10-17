@@ -13,10 +13,10 @@ import { IconButton } from './ui'
 export function Logo({ size = 36 }: { size?: number }) {
   return (
     <span
-      className="grid shrink-0 place-items-center rounded-[28%] bg-linear-to-b from-[#5b5bf0] to-[#8b5cf6] shadow-md"
+      className="grid shrink-0 place-items-center rounded-[28%] bg-accent shadow-md"
       style={{ width: size, height: size }}
     >
-      <svg width={size * 0.56} height={size * 0.56} viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+      <svg width={size * 0.56} height={size * 0.56} viewBox="0 0 24 24" fill="var(--primary)" aria-hidden="true">
         <rect x="2" y="4" width="20" height="4" rx="2" />
         <rect x="6" y="10" width="16" height="4" rx="2" opacity=".85" />
         <rect x="10" y="16" width="12" height="4" rx="2" opacity=".7" />
@@ -47,17 +47,25 @@ export default function Shell() {
 
   return (
     <div className="min-h-dvh pb-28 md:pb-12">
-      <header className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-primary text-white shadow-sm">
         <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4 md:max-w-none md:px-6">
           <Logo />
-          <span className="text-lg font-extrabold">IGhest</span>
+          <span className="text-lg font-extrabold tracking-tight">IGhest</span>
 
           <div className="ms-auto flex items-center gap-1">
-            <IconButton label={dark ? 'حالت روشن' : 'حالت تیره'} onClick={toggle}>
+            <IconButton
+              label={dark ? 'حالت روشن' : 'حالت تیره'}
+              onClick={toggle}
+              className="text-white/80 hover:bg-white/10 hover:text-white"
+            >
               <Icon name={dark ? 'sun' : 'moon'} />
             </IconButton>
             {!demoMode && (
-              <IconButton label="خروج" onClick={() => void signOut()}>
+              <IconButton
+                label="خروج"
+                onClick={() => void signOut()}
+                className="text-white/80 hover:bg-white/10 hover:text-white"
+              >
                 <Icon name="out" />
               </IconButton>
             )}
@@ -72,7 +80,7 @@ export default function Shell() {
             : 'md:grid-cols-[14rem_minmax(0,1fr)]'
         }`}
       >
-        <aside className="hidden border-e border-line bg-surface px-3 py-4 md:flex md:min-h-[calc(100dvh-4rem)] md:flex-col">
+        <aside className="hidden border-e border-white/10 bg-primary px-3 py-4 text-white md:flex md:min-h-[calc(100dvh-4rem)] md:flex-col">
           <div className={`mb-4 flex ${sidebarCollapsed ? 'justify-center' : 'justify-start'}`}>
             <IconButton
               label={sidebarCollapsed ? 'گسترش منو' : 'جمع کردن منو'}
@@ -93,7 +101,7 @@ export default function Shell() {
                 className={({ isActive }) =>
                   `flex min-h-11 items-center rounded-xl text-sm font-semibold transition ${
                     sidebarCollapsed ? 'justify-center px-0' : 'gap-3 px-3'
-                  } ${isActive ? 'bg-brand-soft text-brand' : 'text-muted hover:bg-surface-2 hover:text-text'}`
+                  } ${isActive ? 'bg-accent font-bold text-primary' : 'text-white/75 hover:bg-white/10 hover:text-white'}`
                 }
               >
                 <Icon name={n.icon} />

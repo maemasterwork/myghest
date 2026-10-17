@@ -28,7 +28,7 @@ export function InstallmentRow({
         aria-label={item.paid ? 'علامت پرداخت‌شده را بردار' : 'پرداخت شد'}
         onClick={() => onToggle(!item.paid)}
         className={`grid size-7 shrink-0 place-items-center rounded-full border-2 transition ${
-          item.paid ? 'border-ok bg-ok text-white dark:text-[#0e1020]' : 'border-line text-transparent hover:border-brand'
+          item.paid ? 'border-ok bg-ok-fill text-on-ok' : 'border-line text-transparent hover:border-brand'
         }`}
       >
         <Icon name="check" size={15} />

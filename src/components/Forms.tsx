@@ -279,7 +279,7 @@ export function OpeningBalanceModal({
 
 /* ------------------------------ کارت ------------------------------ */
 
-export const CARD_COLORS = ['#5b5bf0', '#0f9d74', '#e5484d', '#d97706', '#0ea5e9', '#9333ea', '#334155']
+export const CARD_COLORS = ['#142d4e', '#0f766e', '#8a5a00', '#15803d', '#b91c1c', '#334155', '#64748b']
 
 export function CardModal({
   initial,

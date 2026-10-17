@@ -28,11 +28,8 @@ function Hero({ w, today }: { w: Window; today: string }) {
   const future = w.state === 'future'
 
   return (
-    <section className="anim-rise relative overflow-hidden rounded-[32px] bg-linear-to-bl from-[#5b5bf0] via-[#6d5cf2] to-[#8b5cf6] p-6 text-white shadow-card sm:p-8">
-      <div className="pointer-events-none absolute -start-16 -top-20 size-64 rounded-full bg-white/10 blur-2xl" />
-      <div className="pointer-events-none absolute -bottom-24 -end-10 size-56 rounded-full bg-[#c4b5fd]/20 blur-2xl" />
-
-      <div className="relative">
+    <section className="anim-rise relative overflow-hidden rounded-[var(--radius-card)] bg-primary p-6 text-white shadow-card sm:p-8">
+      <div>
         <div className="flex flex-wrap items-center gap-2 text-[13px] text-white/80">
           <span>{future ? 'اولین بازه' : 'از درآمد'} {formatJalali(w.start)}</span>
           <span aria-hidden="true">←</span>
@@ -70,7 +67,7 @@ function Hero({ w, today }: { w: Window; today: string }) {
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-white/20">
               <div
-                className="h-full rounded-full bg-white transition-all duration-500"
+                className="h-full rounded-full bg-accent transition-all duration-500"
                 style={{ width: `${paidRatio * 100}%` }}
               />
             </div>

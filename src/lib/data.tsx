@@ -44,15 +44,15 @@ export interface TxEditorState {
 }
 
 export const DEFAULT_CATEGORIES: { name: string; kind: TxKind; color: string }[] = [
-  { name: 'خوراک و رستوران', kind: 'out', color: '#d97706' },
-  { name: 'حمل‌ونقل', kind: 'out', color: '#0ea5e9' },
-  { name: 'قبض و شارژ', kind: 'out', color: '#5b5bf0' },
-  { name: 'سلامت و درمان', kind: 'out', color: '#e5484d' },
-  { name: 'خرید', kind: 'out', color: '#9333ea' },
-  { name: 'تفریح', kind: 'out', color: '#0f9d74' },
-  { name: 'سایر هزینه‌ها', kind: 'out', color: '#334155' },
-  { name: 'حقوق و پروژه', kind: 'in', color: '#0f9d74' },
-  { name: 'هدیه', kind: 'in', color: '#d97706' },
+  { name: 'خوراک و رستوران', kind: 'out', color: '#8a5a00' },
+  { name: 'حمل‌ونقل', kind: 'out', color: '#475569' },
+  { name: 'قبض و شارژ', kind: 'out', color: '#142d4e' },
+  { name: 'سلامت و درمان', kind: 'out', color: '#b91c1c' },
+  { name: 'خرید', kind: 'out', color: '#334155' },
+  { name: 'تفریح', kind: 'out', color: '#0f766e' },
+  { name: 'سایر هزینه‌ها', kind: 'out', color: '#64748b' },
+  { name: 'حقوق و پروژه', kind: 'in', color: '#15803d' },
+  { name: 'هدیه', kind: 'in', color: '#8a5a00' },
   { name: 'سایر درآمدها', kind: 'in', color: '#334155' },
 ]
 

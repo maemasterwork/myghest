@@ -13,7 +13,7 @@ export function useTheme() {
     }
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', next ? '#0e1020' : '#f6f7fb')
+      ?.setAttribute('content', next ? '#101b2a' : '#f4f7fb')
     setDark(next)
   }, [])
 

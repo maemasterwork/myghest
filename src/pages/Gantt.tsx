@@ -133,12 +133,12 @@ export default function Gantt() {
     const cov = coverage.get(it.key)
     const overdue = !it.paid && it.date < today
     const tone = it.paid
-      ? 'bg-ok text-white dark:text-[#0e1020]'
+      ? 'bg-ok-fill text-on-ok'
       : overdue || cov?.coverage === 'uncovered'
-        ? 'bg-bad text-white dark:text-[#0e1020]'
+        ? 'bg-bad text-white'
         : cov?.coverage === 'partial'
-          ? 'bg-warn text-white dark:text-[#0e1020]'
-          : 'bg-brand text-white dark:text-[#0e1020]'
+          ? 'bg-warn text-primary'
+          : 'bg-brand text-white'
     const status = it.paid
       ? 'پرداخت شده'
       : overdue
@@ -195,7 +195,7 @@ export default function Gantt() {
                   <>
                     <div className="absolute inset-y-0 z-10 w-0.5 bg-brand/70" style={{ right: x(today) }} />
                     <span
-                      className="absolute top-0.5 z-10 translate-x-1/2 rounded-full bg-brand px-1.5 py-0.5 text-[9px] font-bold text-white dark:text-[#0e1020]"
+                      className="absolute top-0.5 z-10 translate-x-1/2 rounded-full bg-brand px-1.5 py-0.5 text-[9px] font-bold text-white"
                       style={{ right: x(today) }}
                     >
                       امروز
@@ -228,7 +228,7 @@ export default function Gantt() {
                     title={`${w.incomes.map((o) => o.title).join(' + ')} · ${toman(w.incomeTotal)}`}
                   >
                     <span
-                      className={`size-4 rotate-45 rounded-[4px] ${w.isExpected ? 'border-2 border-ok bg-surface' : 'bg-ok'}`}
+                      className={`size-4 rotate-45 rounded-[4px] ${w.isExpected ? 'border-2 border-ok bg-surface' : 'bg-ok-fill'}`}
                     />
                     <span className="tnum text-[10px] font-bold text-ok">{compactToman(w.incomeTotal)}</span>
                   </button>
@@ -338,11 +338,11 @@ export default function Gantt() {
       )}
 
       <div className="flex flex-wrap gap-x-4 gap-y-2 px-1 text-xs text-muted">
-        <span className="flex items-center gap-1.5"><i className="size-3 rotate-45 rounded-[3px] bg-ok" />درآمد</span>
+        <span className="flex items-center gap-1.5"><i className="size-3 rotate-45 rounded-[3px] bg-ok-fill" />درآمد</span>
         <span className="flex items-center gap-1.5"><i className="size-3 rounded-full bg-brand" />قسط (پوشش داده می‌شود)</span>
         <span className="flex items-center gap-1.5"><i className="size-3 rounded-full bg-warn" />پوشش ناقص</span>
         <span className="flex items-center gap-1.5"><i className="size-3 rounded-full bg-bad" />کسری / عقب‌افتاده</span>
-        <span className="flex items-center gap-1.5"><i className="size-3 rounded-full bg-ok" />پرداخت شده</span>
+        <span className="flex items-center gap-1.5"><i className="size-3 rounded-full bg-ok-fill" />پرداخت شده</span>
         <span>م = میلیون تومان · ه = هزار تومان</span>
       </div>
     </div>

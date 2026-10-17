@@ -135,7 +135,7 @@ export interface AutoEntry {
 
 export const AUTO_META: Record<AutoKind, { category: string; color: string }> = {
   income: { category: 'درآمد', color: '#0f9d74' },
-  installment: { category: 'اقساط', color: '#5b5bf0' },
+  installment: { category: 'اقساط', color: '#142d4e' },
   transfer: { category: 'انتقال بین کارت‌ها', color: '#0ea5e9' },
 }
 

@@ -21,7 +21,9 @@ import { Icon } from './Icon'
 
 export function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-3xl border border-line bg-surface shadow-card ${className}`}>{children}</div>
+    <div className={`rounded-[var(--radius-card)] border border-line bg-surface shadow-card ${className}`}>
+      {children}
+    </div>
   )
 }
 
@@ -30,7 +32,7 @@ export function Card({ children, className = '' }: { children: ReactNode; classN
 type Variant = 'primary' | 'soft' | 'ghost' | 'danger'
 
 const VARIANTS: Record<Variant, string> = {
-  primary: 'bg-brand text-white hover:brightness-110 shadow-sm dark:text-[#0e1020]',
+  primary: 'bg-accent text-primary shadow-sm hover:brightness-95',
   soft: 'bg-brand-soft text-brand hover:brightness-95',
   ghost: 'text-muted hover:bg-surface-2 hover:text-text',
   danger: 'bg-bad-soft text-bad hover:brightness-95',
@@ -114,7 +116,7 @@ export function Field({
 }
 
 export const inputCls =
-  'h-12 w-full rounded-2xl border border-line bg-surface-2 px-4 text-[15px] text-text outline-none transition placeholder:text-muted/70 focus:border-brand focus:bg-surface focus:ring-4 focus:ring-brand/15'
+  'h-12 w-full rounded-[var(--radius-control)] border border-line bg-surface px-4 text-[15px] text-text outline-none transition placeholder:text-muted/70 focus:border-brand focus:ring-4 focus:ring-brand/15'
 
 export function TextInput(props: InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={`${inputCls} ${props.className ?? ''}`} />
@@ -307,12 +309,12 @@ export function Modal({
   if (!open) return null
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-      <div className="absolute inset-0 bg-[#0b0d1f]/55 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-primary/55 backdrop-blur-sm" onClick={onClose} />
       <div
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="anim-sheet relative flex max-h-[92dvh] w-full flex-col rounded-t-[28px] border border-line bg-surface shadow-2xl sm:max-w-md sm:rounded-[28px]"
+        className="anim-sheet relative flex max-h-[92dvh] w-full flex-col rounded-t-2xl border border-line bg-surface shadow-2xl sm:max-w-md sm:rounded-2xl"
       >
         <div className="flex items-center justify-between px-5 pt-5 pb-2">
           <h2 className="text-lg font-bold">{title}</h2>
@@ -355,7 +357,7 @@ export function EmptyState({
 }
 
 export function ProgressBar({ value, tone = 'brand' }: { value: number; tone?: 'brand' | 'ok' | 'bad' }) {
-  const color = tone === 'ok' ? 'bg-ok' : tone === 'bad' ? 'bg-bad' : 'bg-brand'
+  const color = tone === 'ok' ? 'bg-ok-fill' : tone === 'bad' ? 'bg-bad' : 'bg-accent'
   return (
     <div className="h-2 overflow-hidden rounded-full bg-surface-2" role="presentation">
       <div
