@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/vazirmatn';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f2f9;
+  --line: #e6e8f1;
+  --text: #14162b;
+  --muted: #6a6f90;
+  --brand: #5b5bf0;
+  --brand-2: #8b5cf6;
+  --brand-soft: #ececff;
+  --ok: #0f9d74;
+  --ok-soft: #dff5ec;
+  --warn: #c76a00;
+  --warn-soft: #fff0d9;
+  --bad: #de3d44;
+  --bad-soft: #ffe7e8;
+  --shadow: 0 1px 2px rgb(20 22 43 / 0.04), 0 8px 24px -12px rgb(20 22 43 / 0.12);
+}
+
+.dark {
+  --bg: #0e1020;
+  --surface: #171a30;
+  --surface-2: #1f2342;
+  --line: #2a2f55;
+  --text: #eceefc;
+  --muted: #9ba1ca;
+  --brand: #8387ff;
+  --brand-2: #a78bfa;
+  --brand-soft: #262a5c;
+  --ok: #3ad6a3;
+  --ok-soft: #12352d;
+  --warn: #ffb454;
+  --warn-soft: #3a2b12;
+  --bad: #ff7a80;
+  --bad-soft: #3d1c22;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+}
+
+@theme inline {
+  --font-sans: 'Vazirmatn Variable', system-ui, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-brand-soft: var(--brand-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --shadow-card: var(--shadow);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sheet {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.anim-rise {
+  animation: rise 0.35s ease both;
+}
+.anim-sheet {
+  animation: sheet 0.25s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-sheet {
+    animation: none;
+  }
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
