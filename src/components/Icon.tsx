@@ -20,6 +20,12 @@ const PATHS = {
   tag: 'M20 12l-8 8-9-9V3h8l9 9zM7.5 7.5h.01',
   chart: 'M5 20V11M12 20V5M19 20v-7',
   spark: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z',
+  food: 'M7 3v7M4 3v4a3 3 0 006 0V3M7 10v11M17 3v18M17 3a4 4 0 00-4 4v3h4',
+  transport: 'M5 3h14a2 2 0 012 2v13H3V5a2 2 0 012-2zM3 12h18M7 18v3M17 18v3M7 7h.01M17 7h.01',
+  receipt: 'M5 3h14v18l-3-2-4 2-4-2-3 2V3zM8 8h8M8 12h8M8 16h4',
+  health: 'M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3z',
+  shopping: 'M5 8h14l-1 13H6L5 8zM9 8V6a3 3 0 016 0v2',
+  work: 'M3 8h18v13H3zM8 8V5h8v3M3 13h18M10 13v2h4v-2',
 } as const
 
 export type IconName = keyof typeof PATHS
