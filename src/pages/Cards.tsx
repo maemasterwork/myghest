@@ -35,7 +35,10 @@ function BankCard({
             <div className="truncate text-lg font-extrabold">{card.name}</div>
             {card.bank && <div className="mt-0.5 truncate text-sm text-white/80">{card.bank}</div>}
           </div>
-          <div className="flex shrink-0 gap-1">
+          <div className="flex shrink-0 items-center gap-1">
+            <span className="grid size-10 place-items-center rounded-xl border border-white/20 bg-white/15">
+              <Icon name={card.icon ?? 'card'} size={20} />
+            </span>
             <button
               aria-label="ویرایش کارت"
               onClick={onEdit}

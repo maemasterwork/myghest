@@ -118,6 +118,7 @@ const cardFields = (d: CardDraft) => ({
   name: d.name.trim(),
   bank: d.bank?.trim() ? d.bank.trim() : null,
   color: d.color,
+  icon: d.icon ?? null,
   initial_balance: d.initial_balance,
   start_date: d.start_date,
 })

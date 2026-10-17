@@ -92,7 +92,7 @@ export function CategoryModal({
             <button
               key={c}
               type="button"
-              aria-label={c}
+              aria-label={`انتخاب رنگ ${c}`}
               aria-pressed={color === c}
               onClick={() => setColor(c)}
               className={`size-9 rounded-full transition ${color === c ? 'ring-2 ring-text ring-offset-2 ring-offset-surface' : ''}`}

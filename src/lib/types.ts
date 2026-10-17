@@ -39,6 +39,7 @@ export interface Card {
   name: string
   bank: string | null
   color: string
+  icon?: CategoryIcon | null
   initial_balance: number
   /** موجودی اولیه مربوط به این تاریخ است؛ فقط تراکنش‌های بعد از آن حساب می‌شوند */
   start_date: string
@@ -93,7 +94,27 @@ export interface Settings {
 /** in = واریز، out = برداشت */
 export type TxKind = 'in' | 'out'
 
-export type CategoryIcon = 'food' | 'transport' | 'receipt' | 'health' | 'shopping' | 'work' | 'spark' | 'income' | 'tag'
+export type CategoryIcon =
+  | 'food'
+  | 'transport'
+  | 'receipt'
+  | 'health'
+  | 'shopping'
+  | 'work'
+  | 'spark'
+  | 'income'
+  | 'tag'
+  | 'bank'
+  | 'wallet'
+  | 'savings'
+  | 'home'
+  | 'car'
+  | 'education'
+  | 'travel'
+  | 'phone'
+  | 'gift'
+  | 'pet'
+  | 'card'
 
 export interface TxCategory {
   id: string

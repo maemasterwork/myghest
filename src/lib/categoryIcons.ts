@@ -10,7 +10,30 @@ export const CATEGORY_ICON_OPTIONS: { value: CategoryIcon; label: string }[] = [
   { value: 'spark', label: 'تفریح' },
   { value: 'income', label: 'درآمد' },
   { value: 'tag', label: 'سایر' },
+  { value: 'bank', label: 'بانک' },
+  { value: 'wallet', label: 'کیف پول' },
+  { value: 'savings', label: 'پس‌انداز' },
+  { value: 'home', label: 'خانه' },
+  { value: 'car', label: 'خودرو' },
+  { value: 'education', label: 'آموزش' },
+  { value: 'travel', label: 'سفر' },
+  { value: 'phone', label: 'موبایل' },
+  { value: 'gift', label: 'هدیه' },
+  { value: 'pet', label: 'حیوانات' },
+  { value: 'card', label: 'کارت' },
 ]
+
+export const CARD_ICON_OPTIONS = [
+  { value: 'card', label: 'کارت' },
+  { value: 'bank', label: 'بانک' },
+  { value: 'wallet', label: 'کیف پول' },
+  { value: 'savings', label: 'پس‌انداز' },
+  { value: 'home', label: 'خانه' },
+  { value: 'car', label: 'خودرو' },
+  { value: 'travel', label: 'سفر' },
+  { value: 'shopping', label: 'خرید' },
+  { value: 'work', label: 'کار' },
+] as const
 
 export function categoryIconFor(category: Pick<TxCategory, 'name' | 'kind' | 'icon'>): CategoryIcon {
   if (category.icon) return category.icon

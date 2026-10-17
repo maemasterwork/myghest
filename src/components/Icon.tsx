@@ -26,6 +26,15 @@ const PATHS = {
   health: 'M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3z',
   shopping: 'M5 8h14l-1 13H6L5 8zM9 8V6a3 3 0 016 0v2',
   work: 'M3 8h18v13H3zM8 8V5h8v3M3 13h18M10 13v2h4v-2',
+  bank: 'M3 9h18L12 4 3 9zM5 10v8M9 10v8M15 10v8M19 10v8M3 20h18M2 22h20',
+  wallet: 'M4 6h15a2 2 0 012 2v12H4a2 2 0 01-2-2V6a2 2 0 012-2h14M16 13h5M17 13h.01',
+  savings: 'M12 3v18M17 7H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H7',
+  car: 'M5 17h14l1-7-2-5H6l-2 5 1 7zM4 10h16M7 17v3M17 17v3M7 13h.01M17 13h.01',
+  education: 'M2 10l10-6 10 6-10 6-10-6zM6 12v5c3.5 3 8.5 3 12 0v-5M22 10v7',
+  travel: 'M3 12l18-8-6 17-3-7-9-2zM12 14l4-4',
+  phone: 'M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2zM10 17h4',
+  gift: 'M3 10h18v11H3zM2 6h20v4H2zM12 6v15M12 6H8a2 2 0 110-4c3 0 4 4 4 4zM12 6h4a2 2 0 100-4c-3 0-4 4-4 4z',
+  pet: 'M8 11a2 2 0 100-4 2 2 0 000 4zM16 11a2 2 0 100-4 2 2 0 000 4zM5 17a2 2 0 100-4 2 2 0 000 4zM19 17a2 2 0 100-4 2 2 0 000 4zM12 13c-3 0-5 4-3 6 1 1 2-1 3-1s2 2 3 1c2-2 0-6-3-6z',
 } as const
 
 export type IconName = keyof typeof PATHS

@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom'
 import { useData } from '../lib/data'
 import { addJalaliMonths, formatJalali, todayIso } from '../lib/dates'
 import { errorMessage, toman } from '../lib/format'
-import type { Card, CardDraft, TransferDraft, Income, IncomeDraft, Installment, InstallmentDraft, Recurrence } from '../lib/types'
+import { CARD_ICON_OPTIONS } from '../lib/categoryIcons'
+import type {
+  Card,
+  CardDraft,
+  CategoryIcon,
+  Income,
+  IncomeDraft,
+  Installment,
+  InstallmentDraft,
+  Recurrence,
+  TransferDraft,
+} from '../lib/types'
 import { AmountInput, Button, Field, JalaliDateInput, Modal, Segmented, Select, Switch, TextInput } from './ui'
+import { Icon } from './Icon'
 
 const REC_OPTIONS: { value: Recurrence; label: string }[] = [
   { value: 'none', label: 'یک‌بار' },
@@ -279,7 +291,26 @@ export function OpeningBalanceModal({
 
 /* ------------------------------ کارت ------------------------------ */
 
-export const CARD_COLORS = ['#142d4e', '#0f766e', '#8a5a00', '#15803d', '#b91c1c', '#334155', '#64748b']
+export const CARD_COLORS = [
+  '#142d4e',
+  '#1d4ed8',
+  '#0f766e',
+  '#0d9488',
+  '#15803d',
+  '#4d7c0f',
+  '#8a5a00',
+  '#c2410c',
+  '#b91c1c',
+  '#be123c',
+  '#9d174d',
+  '#7e22ce',
+  '#6d28d9',
+  '#4338ca',
+  '#0369a1',
+  '#334155',
+  '#64748b',
+  '#475569',
+]
 
 export function CardModal({
   initial,
@@ -293,6 +324,7 @@ export function CardModal({
   const [name, setName] = useState(initial?.name ?? '')
   const [bank, setBank] = useState(initial?.bank ?? '')
   const [color, setColor] = useState(initial?.color ?? CARD_COLORS[0])
+  const [icon, setIcon] = useState<CategoryIcon>(initial?.icon ?? 'card')
   const [balance, setBalance] = useState(initial?.initial_balance ?? 0)
   const [date, setDate] = useState(initial?.start_date ?? todayIso())
   const [busy, setBusy] = useState(false)
@@ -303,7 +335,7 @@ export function CardModal({
     setBusy(true)
     setError(null)
     try {
-      await onSave({ id: initial?.id, name, bank, color, initial_balance: balance, start_date: date })
+      await onSave({ id: initial?.id, name, bank, color, icon, initial_balance: balance, start_date: date })
       onClose()
     } catch (e) {
       setError(errorMessage(e))
@@ -333,13 +365,34 @@ export function CardModal({
       <Field label="بانک (اختیاری)">
         <TextInput value={bank} onChange={(e) => setBank(e.target.value)} placeholder="مثلاً ملی، ملت، سامان" />
       </Field>
+      <Field label="آیکن کارت">
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
+          {CARD_ICON_OPTIONS.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              aria-label={option.label}
+              aria-pressed={icon === option.value}
+              onClick={() => setIcon(option.value)}
+              className={`flex min-h-14 flex-col items-center justify-center gap-1 rounded-xl border text-xs font-semibold transition ${
+                icon === option.value
+                  ? 'border-brand bg-brand-soft text-brand'
+                  : 'border-line bg-surface text-muted hover:bg-surface-2 hover:text-text'
+              }`}
+            >
+              <Icon name={option.value} size={19} />
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </Field>
       <Field label="رنگ">
         <div className="flex flex-wrap gap-2.5">
           {CARD_COLORS.map((c) => (
             <button
               key={c}
               type="button"
-              aria-label={c}
+              aria-label={`انتخاب رنگ ${c}`}
               aria-pressed={color === c}
               onClick={() => setColor(c)}
               className={`size-9 rounded-full transition ${color === c ? 'ring-2 ring-text ring-offset-2 ring-offset-surface' : ''}`}
