@@ -264,12 +264,21 @@ export function DataProvider({ children }: { children: ReactNode }) {
       saveCategory: (d) => mutate(() => repo.saveCategory(d)),
       deleteCategory: (id) => mutate(() => repo.deleteCategory(id)),
       async seedCategories() {
-        await mutate(async () => {
-          const have = new Set(db.categories.map((c) => `${c.kind}|${c.name}`))
-          for (const c of DEFAULT_CATEGORIES) {
-            if (!have.has(`${c.kind}|${c.name}`)) await repo.saveCategory(c)
-          }
-        })
+        const have = new Set(db.categories.map((c) => `${c.kind}|${c.name}`))
+        try {
+          await mutate(async () => {
+            for (const c of DEFAULT_CATEGORIES) {
+              const key = `${c.kind}|${c.name}`
+              if (!have.has(key)) {
+                await repo.saveCategory(c)
+                have.add(key)
+              }
+            }
+          })
+        } catch (e) {
+          await reload()
+          throw e
+        }
       },
       saveTransaction: (d) => mutate(() => repo.saveTransaction(d)),
       deleteTransaction: (id) => mutate(() => repo.deleteTransaction(id)),
