@@ -52,7 +52,7 @@ export default function AuthPage() {
       <div className="anim-rise w-full max-w-sm">
         <div className="mb-8 flex flex-col items-center text-center">
           <Logo size={56} />
-          <h1 className="mt-4 text-2xl font-extrabold">قسط‌یار</h1>
+          <h1 className="mt-4 text-2xl font-extrabold">IGhest</h1>
           <p className="mt-2 text-sm leading-7 text-muted">
             ببین از هر درآمد چقدر باید برای اقساط تا درآمد بعدی کنار بگذاری.
           </p>

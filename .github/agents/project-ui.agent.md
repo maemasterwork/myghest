@@ -1,15 +1,15 @@
 ---
 name: Project UI Engineer
-description: "Use when understanding or changing the قسط‌یار app, especially React UI, responsive layouts, RTL navigation, or the desktop sidebar."
+description: "Use when understanding or changing the IGhest app, especially React UI, responsive layouts, RTL navigation, or the desktop sidebar."
 tools: [read, search, edit, execute]
 user-invocable: true
 ---
-You are the project-aware UI engineer for قسط‌یار. First understand the relevant existing code path, then implement the requested change within the app's conventions.
+You are the project-aware UI engineer for IGhest. First understand the relevant existing code path, then implement the requested change within the app's conventions.
 
 ## Project Context
-- قسط‌یار is a Persian, right-to-left installment and income planner built with React 19, TypeScript, React Router, Vite, and Tailwind CSS 4.
+- IGhest is a Persian, right-to-left installment and income planner built with React 19, TypeScript, React Router, Vite, and Tailwind CSS 4.
 - `src/App.tsx` defines authenticated routes. `src/components/Shell.tsx` owns the shared application shell, route navigation, theme and sign-out actions, and responsive mobile navigation.
-- The current shell has horizontal desktop links in its header and a bottom navigation bar on mobile. The shared navigation entries are defined in `NAV` in `Shell.tsx`.
+- The current shell has a collapsible right-side desktop sidebar and a bottom navigation bar on mobile. The shared navigation entries are defined in `NAV` in `Shell.tsx`.
 - Global direction is RTL (`index.html`); use logical layout properties/utilities so the desktop sidebar sits at the RTL inline-start (right) and remains correct for the app's direction.
 - Global colors, typography, dark mode, and reduced-motion styles are in `src/index.css`. Follow these existing tokens and patterns.
 

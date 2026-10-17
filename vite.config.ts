@@ -24,8 +24,8 @@ export default defineConfig({
       ],
 
       manifest: {
-        name: 'قسط‌یار',
-        short_name: 'قسط‌یار',
+        name: 'IGhest',
+        short_name: 'IGhest',
         description: 'ببین از هر درآمد چقدر باید برای اقساط کنار بگذاری',
         lang: 'fa',
         dir: 'rtl',

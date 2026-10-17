@@ -27,10 +27,9 @@ function BankCard({
   return (
     <div className="anim-rise">
       <div
-        className="relative overflow-hidden rounded-3xl p-5 text-white shadow-card"
+        className="relative overflow-hidden rounded-2xl p-4 text-white shadow-card"
         style={{ background: `linear-gradient(135deg, ${card.color}, ${card.color}b3)` }}
       >
-        <div className="pointer-events-none absolute -end-10 -top-16 size-48 rounded-full bg-white/15 blur-xl" />
         <div className="relative flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="truncate text-lg font-extrabold">{card.name}</div>
@@ -54,36 +53,36 @@ function BankCard({
           </div>
         </div>
 
-        <div className="relative mt-6">
+        <div className="relative mt-4 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
           <div className="text-xs text-white/75">موجودی فعلی</div>
-          <div className="tnum mt-1 flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold">{balance < 0 ? '−' : ''}{toman(Math.abs(balance)).replace(' تومان', '')}</span>
-            <span className="text-sm text-white/80">تومان</span>
+          <div className="tnum flex items-baseline gap-2">
+            <span className="text-2xl font-extrabold">{balance < 0 ? '−' : ''}{toman(Math.abs(balance)).replace(' تومان', '')}</span>
+            <span className="text-xs text-white/80">تومان</span>
           </div>
         </div>
 
-        <div className="relative mt-4 grid grid-cols-2 gap-2 text-[11px]">
-          <div className="rounded-xl bg-white/15 px-2.5 py-2">
-            <div className="text-white/70">موجودی اولیه</div>
+        <div className="relative mt-3 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-white/20 pt-3 text-xs">
+          <div className="min-w-0">
+            <div className="text-[11px] text-white/70">موجودی اولیه</div>
             <div className="tnum mt-0.5 font-bold">{shortToman(card.initial_balance)}</div>
           </div>
-          <div className="rounded-xl bg-white/15 px-2.5 py-2">
-            <div className="text-white/70">واریز درآمد</div>
+          <div className="min-w-0">
+            <div className="text-[11px] text-white/70">واریز درآمد</div>
             <div className="tnum mt-0.5 font-bold">+{shortToman(s.deposits)}</div>
           </div>
-          <div className="rounded-xl bg-white/15 px-2.5 py-2">
-            <div className="text-white/70">پرداخت قسط</div>
+          <div className="min-w-0">
+            <div className="text-[11px] text-white/70">پرداخت قسط</div>
             <div className="tnum mt-0.5 font-bold">−{shortToman(s.paid)}</div>
           </div>
-          <div className="col-span-2 rounded-xl bg-white/15 px-2.5 py-2">
-            <div className="text-white/70">تراکنش‌های روزانه (خالص)</div>
+          <div className="min-w-0">
+            <div className="text-[11px] text-white/70">تراکنش روزانه (خالص)</div>
             <div className="tnum mt-0.5 font-bold">
               {s.txIn - s.txOut >= 0 ? '+' : '−'}
               {shortToman(Math.abs(s.txIn - s.txOut))}
             </div>
           </div>
-          <div className="col-span-2 rounded-xl bg-white/15 px-2.5 py-2">
-            <div className="text-white/70">انتقال (خالص)</div>
+          <div className="min-w-0">
+            <div className="text-[11px] text-white/70">انتقال (خالص)</div>
             <div className="tnum mt-0.5 font-bold">
               {s.transfersIn - s.transfersOut >= 0 ? '+' : '−'}
               {shortToman(Math.abs(s.transfersIn - s.transfersOut))}
@@ -189,7 +188,7 @@ export default function Cards() {
         </EmptyState>
       ) : (
         <>
-          <Card className="p-5">
+          <Card className="p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-sm text-muted">موجودی همه‌ی کارت‌ها</div>
@@ -217,7 +216,7 @@ export default function Cards() {
             )}
           </Card>
 
-          <div className="space-y-5">
+          <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
             {cardSummaries.map((s) => (
               <BankCard
                 key={s.card.id}

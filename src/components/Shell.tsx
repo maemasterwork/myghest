@@ -50,7 +50,7 @@ export default function Shell() {
       <header className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4 md:max-w-none md:px-6">
           <Logo />
-          <span className="text-lg font-extrabold">قسط‌یار</span>
+          <span className="text-lg font-extrabold">IGhest</span>
 
           <div className="ms-auto flex items-center gap-1">
             <IconButton label={dark ? 'حالت روشن' : 'حالت تیره'} onClick={toggle}>
@@ -103,7 +103,7 @@ export default function Shell() {
           </nav>
         </aside>
 
-        <main className="mx-auto w-full max-w-3xl px-4 pt-6 md:px-6">
+        <main className="mx-auto w-full max-w-3xl px-4 pt-6 md:max-w-none md:px-6">
           {demoMode && (
             <div className="mb-5 rounded-2xl bg-warn-soft px-4 py-3 text-[13px] leading-6 text-warn">
               حالت نمایشی: Supabase هنوز وصل نشده و داده‌ها فقط در همین مرورگر ذخیره می‌شوند. برای استفاده‌ی واقعی،
