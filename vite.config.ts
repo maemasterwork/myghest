@@ -11,20 +11,30 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icon-192.png', 'icon-512.png'],
+
+      includeAssets: [
+        'favicon.svg',
+        'icon-192.png',
+        'icon-512.png',
+      ],
+
       manifest: {
         name: 'قسط‌یار',
         short_name: 'قسط‌یار',
         description: 'ببین از هر درآمد چقدر باید برای اقساط کنار بگذاری',
         lang: 'fa',
         dir: 'rtl',
+
         start_url: '/ghestyar/',
         scope: '/ghestyar/',
         display: 'standalone',
+
         background_color: '#f6f7fb',
         theme_color: '#5b5bf0',
+
         icons: [
           {
             src: 'icon-192.png',
@@ -44,11 +54,14 @@ export default defineConfig({
           },
         ],
       },
+
       workbox: {
         navigateFallback: '/ghestyar/index.html',
       },
     }),
   ],
 
-  test: { environment: 'node' },
+  test: {
+    environment: 'node',
+  },
 })
