@@ -5,8 +5,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const base = '/myghest/'
+
 export default defineConfig({
-  base: '/ghestyar/',
+  base,
 
   plugins: [
     react(),
@@ -28,8 +30,8 @@ export default defineConfig({
         lang: 'fa',
         dir: 'rtl',
 
-        start_url: '/ghestyar/',
-        scope: '/ghestyar/',
+        start_url: base,
+        scope: base,
         display: 'standalone',
 
         background_color: '#f6f7fb',
@@ -56,7 +58,7 @@ export default defineConfig({
       },
 
       workbox: {
-        navigateFallback: '/ghestyar/index.html',
+        navigateFallback: `${base}index.html`,
       },
     }),
   ],
