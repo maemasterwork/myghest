@@ -93,11 +93,14 @@ export interface Settings {
 /** in = واریز، out = برداشت */
 export type TxKind = 'in' | 'out'
 
+export type CategoryIcon = 'food' | 'transport' | 'receipt' | 'health' | 'shopping' | 'work' | 'spark' | 'income' | 'tag'
+
 export interface TxCategory {
   id: string
   name: string
   kind: TxKind
   color: string
+  icon?: CategoryIcon | null
   archived: boolean
 }
 

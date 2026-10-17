@@ -1,24 +1,11 @@
 import { useState } from 'react'
 import { CategoryModal } from '../components/CategoryModal'
-import { Icon, type IconName } from '../components/Icon'
+import { Icon } from '../components/Icon'
 import { Badge, Button, Card, EmptyState } from '../components/ui'
+import { categoryIconFor } from '../lib/categoryIcons'
 import { useData } from '../lib/data'
 import { errorMessage } from '../lib/format'
 import type { TxCategory, TxKind } from '../lib/types'
-
-function categoryIcon(category: TxCategory): IconName {
-  const name = category.name.toLocaleLowerCase('fa-IR')
-  if (['خوراک', 'رستوران', 'غذا', 'کافه'].some((word) => name.includes(word))) return 'food'
-  if (['حمل', 'رفت‌وآمد', 'رفت و آمد', 'تاکسی', 'سوخت', 'خودرو'].some((word) => name.includes(word))) {
-    return 'transport'
-  }
-  if (['قبض', 'شارژ', 'آب', 'برق', 'گاز', 'اینترنت'].some((word) => name.includes(word))) return 'receipt'
-  if (['سلامت', 'درمان', 'دارو', 'پزشک'].some((word) => name.includes(word))) return 'health'
-  if (['خرید', 'پوشاک', 'فروشگاه'].some((word) => name.includes(word))) return 'shopping'
-  if (['حقوق', 'دستمزد', 'پروژه'].some((word) => name.includes(word))) return 'work'
-  if (['تفریح', 'سرگرمی', 'سفر'].some((word) => name.includes(word))) return 'spark'
-  return category.kind === 'in' ? 'income' : 'tag'
-}
 
 export default function Categories() {
   const { categories, transactions, saveCategory, deleteCategory, seedCategories } = useData()
@@ -62,7 +49,7 @@ export default function Categories() {
                   className="grid size-9 shrink-0 place-items-center rounded-xl"
                   style={{ color: c.color, backgroundColor: `${c.color}1a` }}
                 >
-                  <Icon name={categoryIcon(c)} size={18} />
+                  <Icon name={categoryIconFor(c)} size={18} />
                 </span>
                 <span className="min-w-0 flex-1 truncate font-semibold">{c.name}</span>
                 {c.archived && <Badge>بایگانی</Badge>}

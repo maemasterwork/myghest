@@ -101,6 +101,7 @@ const categoryFields = (d: TxCategoryDraft) => ({
   name: d.name.trim(),
   kind: d.kind,
   color: d.color,
+  icon: d.icon ?? null,
   archived: d.archived ?? false,
 })
 
